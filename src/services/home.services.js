@@ -21,9 +21,9 @@ export const fetchGetPostById = async (id) => {
     }
 }
 
-export const createPost = async ({title, body, userId}) => {
+export const createPost = async ({title, body}) => {
     try {
-        const response = await axios.post(`${API_URL_2}`,{title,body,userId});
+        const response = await axios.post(`${API_URL_2}`,{title,body,userId:1});
         return response.data;
     } catch (error) {
         console.log('error creating post by id',error)
