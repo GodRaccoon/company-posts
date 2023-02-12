@@ -1,7 +1,7 @@
 import { Box, Button, ButtonGroup, Card, CardMedia, Typography, useMediaQuery } from '@mui/material'
 import { useEffect, useState } from 'react';
 import { Link, Redirect, useHistory } from 'react-router-dom';
-import { getRandomImage } from '../../services'
+import { getRandomImage, deletePost, updatePost } from '../../services'
 
 
 const PostCard = (props) => {
@@ -25,11 +25,13 @@ const PostCard = (props) => {
     //     setImage(response)
     // }
 
-    const handleDeletePost = () => {
+    const handleDeletePost = async () => {
+        await deletePost(id)
         console.log('delete post')   
     }
 
-    const handleUpdatePost = () => {
+    const handleUpdatePost = async () => {
+        // await updatePost(userId, id, title, body)
         console.log('update post')   
     }
 
