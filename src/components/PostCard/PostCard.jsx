@@ -1,6 +1,6 @@
 import { Box, Button, ButtonGroup, Card, CardMedia, Paper, Typography, useMediaQuery } from '@mui/material'
 import { useEffect, useState } from 'react';
-import { Redirect, useHistory } from 'react-router-dom';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 import { getRandomImage } from '../../services'
 
 
@@ -14,7 +14,7 @@ const PostCard = (props) => {
         <Button key='delete-button' onClick={()=>handleDeletePost()}>Delete</Button>
     ];
     // const [image,setImage] = useState({})
-    const history = useHistory();
+    // const history = useHistory();
 
     // useEffect(() => {
     //     generateRandomImage();
@@ -24,11 +24,6 @@ const PostCard = (props) => {
     //     const response = await getRandomImage();
     //     setImage(response)
     // }
-
-    const handleRedirect = () => {
-        console.log('redirect')
-        history.push(`/PostCard/${id}`)
-    }
 
     const handleDeletePost = () => {
         console.log('delete post')   
@@ -59,15 +54,15 @@ const PostCard = (props) => {
                     minWidth: '5rem',
                     cursor:'pointer',
                 }}
-                // onClick={()=>{handleRedirect()}} 
             >
-                <Box 
-                    onClick={()=>{handleRedirect()}} 
-                    sx={{height:'14rem'}}
-                >
-                    <Typography component='div' variant='h5'>{title}</Typography>
-                    <Typography component='div' variant='h8' sx={{mt:2}}>{body}</Typography>
-                </Box>
+                <Link to={`/PostCard/${id}`}>
+                    <Box 
+                        sx={{height:'12rem'}}
+                    >
+                        <Typography component='div' variant='h5'>{title}</Typography>
+                        <Typography component='div' variant='h8' sx={{mt:2}}>{body}</Typography>
+                    </Box>
+                </Link>
                 <Box
                     sx={{
                         display: 'flex',

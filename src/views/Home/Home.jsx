@@ -1,7 +1,7 @@
 import { Box, Container } from '@mui/material';
 import { useEffect, useState } from 'react'
 import { fetchAllPosts } from '../../services'
-import { MainTitle, SecondaryTitle, PostCard } from '../../components';
+import { MainTitle, SecondaryTitle, PostCard, CreatePostButton } from '../../components';
 import CardLayoutContainer from '../../layouts/PostCardLayoutContainer/CardLayoutContainer'
 
 const Home = () => {
@@ -31,6 +31,7 @@ const Home = () => {
             >
                 <SecondaryTitle title={'[Making your Life Easier]'}/>
                 <MainTitle title={'Discovering the world'}/>
+                <CreatePostButton/>
                 <CardLayoutContainer
                     cardLayoutProps = {cardLayoutProps}
                     renderComponent = { PostCard }
