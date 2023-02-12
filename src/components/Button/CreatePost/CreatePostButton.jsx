@@ -53,7 +53,7 @@ const CreatePostButton = (props) => {
             >
                 <Fade in={open}>
                     <Box sx={style}>
-                        <CreatePost/>
+                        <CreatePost handleClose={handleClose}/>
                     </Box>
                 </Fade>
             </Modal>

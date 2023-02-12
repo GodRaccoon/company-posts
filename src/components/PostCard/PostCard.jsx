@@ -1,4 +1,4 @@
-import { Box, Button, ButtonGroup, Card, CardMedia, Paper, Typography, useMediaQuery } from '@mui/material'
+import { Box, Button, ButtonGroup, Card, CardMedia, Typography, useMediaQuery } from '@mui/material'
 import { useEffect, useState } from 'react';
 import { Link, Redirect, useHistory } from 'react-router-dom';
 import { getRandomImage } from '../../services'

@@ -2,8 +2,11 @@ import { Box, Button, TextField, Typography } from '@mui/material'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { textFieldYupValidation1, textFieldYupValidation2 } from '../../../utilities'
+import { createPost } from '../../../services'
 
 const CreatePost = (props) => {
+
+    const { handleClose } = props
 
     const formValues = {
         title: '',
@@ -16,7 +19,8 @@ const CreatePost = (props) => {
     })
 
     const handleSubmit = async (values) => {
-        console.log('values',values)
+        await createPost(values)
+        handleClose()
     }
 
     return(
