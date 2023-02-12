@@ -1,6 +1,6 @@
 import { Box, Button, ButtonGroup, Card, CardMedia, Paper, Typography, useMediaQuery } from '@mui/material'
 import { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { getRandomImage } from '../../services'
 
 
@@ -13,17 +13,17 @@ const PostCard = (props) => {
         <Button key='update-button' onClick={()=>handleUpdatePost()}>Update</Button>,
         <Button key='delete-button' onClick={()=>handleDeletePost()}>Delete</Button>
     ];
-    const [image,setImage] = useState({})
+    // const [image,setImage] = useState({})
     const history = useHistory();
 
-    useEffect(() => {
-        generateRandomImage();
-    }, [])
+    // useEffect(() => {
+    //     generateRandomImage();
+    // }, [])
 
-    const generateRandomImage = async () => {
-        const response = await getRandomImage();
-        setImage(response)
-    }
+    // const generateRandomImage = async () => {
+    //     const response = await getRandomImage();
+    //     setImage(response)
+    // }
 
     const handleRedirect = () => {
         console.log('redirect')

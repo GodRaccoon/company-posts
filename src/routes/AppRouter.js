@@ -4,33 +4,38 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Redirect,
+    Redirect
   } from "react-router-dom";
+
+import ErrorView from '../views/Error/Error';
+import Home from '../views/Home/Home';
+import PostInfo from '../views/PostInfo/PostInfo';
+
   
 const AppRouter = () => {
-    const HomeView = lazy(() => import('../views/Home/Home'))
-    const ErrorView = lazy(() => import('../views/Error/Error'))
-    const PostInfoView = lazy(() => import('../views/PostInfo/PostInfo'))
+    // const HomeView = lazy(() => import('../views/Home/Home'))
+    // const ErrorView = lazy(() => import('../views/Error/Error'))
+    // const PostInfoView = lazy(() => import('../views/PostInfo/PostInfo'))
 
     return (
         <Router>
           <Switch>
-            <Route path="/">
-                <Suspense>
+            <Route exact path="/" component={Home}>
+                {/* <Suspense>
                     <HomeView/>
-                </Suspense>
+                </Suspense> */}
             </Route>
 
-            <Route exact path="/PostCard/:id">
-              <Suspense>
+            <Route path="/PostCard/:id" component={PostInfo}>
+              {/* <Suspense>
                 <PostInfoView/>
-              </Suspense>
+              </Suspense> */}
             </Route>
 
-            <Route exact path="/404">
-                <Suspense>
+            <Route path="/404" component={ErrorView}>
+                {/* <Suspense>
                     <ErrorView />
-                </Suspense>                
+                </Suspense>                 */}
             </Route>
             
             <Route path="*">
