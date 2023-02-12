@@ -1,4 +1,4 @@
-import { Backdrop, Button, Fade, Modal, Typography } from '@mui/material'
+import { Backdrop, Button, Fade, Modal } from '@mui/material'
 import { Box } from '@mui/system'
 import { useState } from 'react'
 import CreatePost from '../../Forms/CreatePostForm/CreatePost';
@@ -25,10 +25,6 @@ const CreatePostButton = (props) => {
 
     const handleClose = () => {
         setOpen(false);
-    }
-
-    const handleCreatePost= () => {
-        console.log('creating post')
     }
 
     return(

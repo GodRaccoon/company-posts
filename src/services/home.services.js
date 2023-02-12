@@ -20,3 +20,30 @@ export const fetchGetPostById = async (id) => {
         console.log('error getting post by id',error)
     }
 }
+
+export const createPost = async ({title, body, userId}) => {
+    try {
+        const response = await axios.post(`${API_URL_2}`,{title,body,userId});
+        return response.data;
+    } catch (error) {
+        console.log('error creating post by id',error)
+    }
+}
+
+export const updatePost = async ({id,title,body,userId}) => {
+    try {
+        const response = await axios.put(`${API_URL_1}${id}`,{id,title,body,userId});
+        return response.data;
+    } catch (error) {
+        console.log('error updating post by id',error)
+    }
+}
+
+export const deletePost = async (id) => {
+    try {
+        const response = await axios.delete(`${API_URL_1}${id}`);
+        return response.data;
+    } catch (error) {
+        console.log('error deleting post by id',error)
+    }
+}
