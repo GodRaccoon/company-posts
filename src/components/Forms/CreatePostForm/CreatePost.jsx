@@ -1,7 +1,7 @@
 import { Box, Button, TextField, Typography } from '@mui/material'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
-import { textFieldYupValidation } from '../../../utilities'
+import { textFieldYupValidation1, textFieldYupValidation2 } from '../../../utilities'
 
 const CreatePost = (props) => {
 
@@ -11,8 +11,8 @@ const CreatePost = (props) => {
     }
 
     const CreatePostValidationSchema = Yup.object().shape({
-        title:textFieldYupValidation,
-        body: textFieldYupValidation
+        title:textFieldYupValidation1,
+        body: textFieldYupValidation2
     })
 
     const handleSubmit = async (values) => {
@@ -29,37 +29,39 @@ const CreatePost = (props) => {
             <Formik initialValues={formValues} validationSchema={CreatePostValidationSchema} onSubmit={handleSubmit}>
                 {({errors, touched})=>(
                     <Form>
-                        <Field
-                            as={TextField}
-                            margin='normal'
-                            size='small'
-                            fullWidth
-                            id='title'
-                            label='Title *'
-                            name='Title'
-                            error={!!errors.title && touched.title}
-                            helperText={<ErrorMessage name='title'/>}
-                        />
-                        <Field
-                            as={TextField}
-                            margin='normal'
-                            size='small'
-                            fullWidth
-                            id='body'
-                            label='Body *'
-                            name='body'
-                            error={!!errors.body && touched.body}
-                            helperText={<ErrorMessage name='body'/>}
-                        />
-                        <Button
-                            type='submit'
-                            fullWidth
-                            variant='contained'
-                            color='error'
-                            sx={{mt:3, mb:2}}
-                        >
-                            Submit
-                        </Button>
+                        <Box>
+                            <Field
+                                as={TextField}
+                                margin='normal'
+                                size='small'
+                                fullWidth
+                                id='title'
+                                label='Title *'
+                                name='title'
+                                error={!!errors.title && touched.title}
+                                helperText={<ErrorMessage name='title'/>}
+                            />
+                            <Field
+                                as={TextField}
+                                margin='normal'
+                                size='small'
+                                fullWidth
+                                id='body'
+                                label='Body *'
+                                name='body'
+                                error={!!errors.body && touched.body}
+                                helperText={<ErrorMessage name='body'/>}
+                            />
+                            <Button
+                                type='submit'
+                                fullWidth
+                                variant='contained'
+                                color='error'
+                                sx={{mt:3, mb:2}}
+                            >
+                                Submit
+                            </Button>
+                        </Box>
                     </Form>
                 )}
             </Formik>
