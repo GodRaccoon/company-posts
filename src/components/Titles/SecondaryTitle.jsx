@@ -6,7 +6,7 @@ const SecondaryTitle = (props) => {
 
     return(
         <Box>
-            <Typography align='center' variant='h2' component='h2'>
+            <Typography align='center' variant='h6' component='h2'>
                 {title}
             </Typography>
         </Box>

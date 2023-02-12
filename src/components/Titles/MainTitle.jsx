@@ -5,7 +5,7 @@ const MainTitle = (props) => {
     const { title } = props;
 
     return(
-        <Typography align='center' variant='h1' component='h2'>
+        <Typography align='center' variant='h2' component='h2'>
             {title}
         </Typography>
     )

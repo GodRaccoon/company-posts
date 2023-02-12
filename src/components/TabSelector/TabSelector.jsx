@@ -4,7 +4,7 @@ const TabSelector = (props) => {
     
     return(
         <Box>
-            <Typography variant="h2" component="h2">
+            <Typography variant='h2' component='h2'>
                 {'Some day I will be a tab selector'}
             </Typography>
         </Box>

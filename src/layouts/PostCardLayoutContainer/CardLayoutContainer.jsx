@@ -1,4 +1,4 @@
-import { Grid, Typography, useMediaQuery, Box } from "@mui/material";
+import { Grid, Typography, useMediaQuery, Box } from '@mui/material';
 
 const CardLayoutContainer = (props) => {
 
@@ -11,39 +11,39 @@ const CardLayoutContainer = (props) => {
     const {
         cardLayoutState = [],
         gridSpacing = 2,
-        gridDirection = "row",
-        gridJustifyContent = "center",
-        gridAlignItems = "center",
+        gridDirection = 'row',
+        gridJustifyContent = 'center',
+        gridAlignItems = 'center',
         numOfColumns = 1,
     } = cardLayoutProps;
 
-    const isActiveSm = useMediaQuery("(max-width: 600px");
-    const isActiveMd = useMediaQuery("(max-width: 900px");
-    const isActiveMdLg = useMediaQuery("(max-width: 1200px");
+    const isActiveSm = useMediaQuery('(max-width: 600px');
+    const isActiveMd = useMediaQuery('(max-width: 900px');
+    const isActiveMdLg = useMediaQuery('(max-width: 1200px');
+    const isActiveX = useMediaQuery('(max-width: 1500px');
 
     const getColumns = (numOfColumns) => {
-        if (numOfColumns === 1) return numOfColumns;
 
         if (isActiveSm || isActiveMd) {
             return 1;
-        }
-
-        if (isActiveMdLg) {
-            return numOfColumns / 2 === 1.5 ? 2 : numOfColumns;
+        }else if(isActiveMdLg){
+            return 2
+        }else if(isActiveX){
+            return 2
         }
 
         return numOfColumns;
     }
 
     const CardContainerStyle = {
-        marginTop: "8px",
+        marginTop: '8px',
     }
 
     const MainContent = () => {
         return (
         <>
             {cardLayoutState.length ? (
-                <Box sx={{ width: "100%" }}>
+                <Box sx={{ width: '100%' }}>
                     <Grid
                         container
                         columns={getColumns(numOfColumns)}
@@ -51,13 +51,15 @@ const CardLayoutContainer = (props) => {
                         rowSpacing={1}
                         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
                         sx={CardContainerStyle}
+                        padding={0}
                     >
-                        {cardLayoutState.map((data) => {
+                        {cardLayoutState.map((data, index) => {
                             return (
                                 <Grid
+                                    key={index}
                                     item
                                     sx={{
-                                        marginTop: "10px",
+                                        marginTop: '10px',
                                     }}
                                 >
                                     <RenderComponent
@@ -88,10 +90,10 @@ const CardLayoutContainer = (props) => {
             spacing={gridSpacing}
             justifyContent={gridJustifyContent}
             alignItems={gridAlignItems}
-            sx={{ m: "auto", p: "2 0" }}
+            sx={{ m: 'auto', p: '2 0' }}
         >
             <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-            <MainContent/>
+                <MainContent/>
             </Grid>
         </Grid>
     );
