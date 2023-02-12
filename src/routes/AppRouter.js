@@ -10,6 +10,7 @@ import {
 const AppRouter = () => {
     const HomeView = lazy(() => import('../views/Home/Home'))
     const ErrorView = lazy(() => import('../views/Error/Error'))
+    const PostInfoView = lazy(() => import('../views/PostInfo/PostInfo'))
 
     return (
         <Router>
@@ -18,6 +19,12 @@ const AppRouter = () => {
                 <Suspense>
                     <HomeView/>
                 </Suspense>
+            </Route>
+
+            <Route exact path="/PostCard/:id">
+              <Suspense>
+                <PostInfoView/>
+              </Suspense>
             </Route>
 
             <Route exact path="/404">

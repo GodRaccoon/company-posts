@@ -1,4 +1,8 @@
-import { Box, Button, ButtonGroup, Paper, Typography, useMediaQuery } from '@mui/material'
+import { Box, Button, ButtonGroup, Card, CardMedia, Paper, Typography, useMediaQuery } from '@mui/material'
+import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { getRandomImage } from '../../services'
+
 
 const PostCard = (props) => {
     
@@ -6,9 +10,33 @@ const PostCard = (props) => {
     
     const isActiveSm = useMediaQuery('(max-width: 600px');
     const buttons = [
-        <Button key='update-button'>Update</Button>,
-        <Button key='delete-button'>Delete</Button>
+        <Button key='update-button' onClick={()=>handleUpdatePost()}>Update</Button>,
+        <Button key='delete-button' onClick={()=>handleDeletePost()}>Delete</Button>
     ];
+    const [image,setImage] = useState({})
+    const history = useHistory();
+
+    useEffect(() => {
+        generateRandomImage();
+    }, [])
+
+    const generateRandomImage = async () => {
+        const response = await getRandomImage();
+        setImage(response)
+    }
+
+    const handleRedirect = () => {
+        console.log('redirect')
+        history.push(`/PostCard/${id}`)
+    }
+
+    const handleDeletePost = () => {
+        console.log('delete post')   
+    }
+
+    const handleUpdatePost = () => {
+        console.log('update post')   
+    }
 
     return(
         <Box
@@ -16,8 +44,7 @@ const PostCard = (props) => {
             justifyContent='center'
             alignItems='center'
         >
-            <Paper
-                elevation={1}
+            <Card
                 sx={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -26,13 +53,18 @@ const PostCard = (props) => {
                     padding: 1,
                     overflow: 'hidden',
                     width:'40rem',
+                    height:'15rem',
                     maxWidth: isActiveSm ? '20rem':'40rem',
                     minHeight: '10rem',
                     minWidth: '5rem',
-                    cursor:'pointer'
+                    cursor:'pointer',
                 }}
+                // onClick={()=>{handleRedirect()}} 
             >
-                <Box>
+                <Box 
+                    onClick={()=>{handleRedirect()}} 
+                    sx={{height:'14rem'}}
+                >
                     <Typography component='div' variant='h5'>{title}</Typography>
                     <Typography component='div' variant='h8' sx={{mt:2}}>{body}</Typography>
                 </Box>
@@ -50,7 +82,7 @@ const PostCard = (props) => {
                         {buttons}
                     </ButtonGroup>
                 </Box>
-            </Paper>
+            </Card>
         </Box>
     )
 }

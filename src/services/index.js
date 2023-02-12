@@ -1,1 +1,2 @@
-export * from './home.services.js'
+export * from './home.services'
+export * from './image.services'

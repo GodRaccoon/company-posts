@@ -13,8 +13,8 @@ const Home = () => {
 
     const getAllPosts = async () => {
         const allPostsArray = await fetchAllPosts();
-        setAllPosts(allPostsArray)
-        console.log(allPostsArray)
+        setAllPosts(allPostsArray.slice(0, 10))
+        console.log(allPostsArray.slice(0, 10))
     }
 
     const cardLayoutProps = {

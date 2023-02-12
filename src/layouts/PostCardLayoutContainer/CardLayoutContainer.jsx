@@ -49,7 +49,7 @@ const CardLayoutContainer = (props) => {
                         columns={getColumns(numOfColumns)}
                         spacing={2}
                         rowSpacing={1}
-                        columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+                        columnSpacing={{ xs: 0.5, sm: 0.5, md: 0.5 }}
                         sx={CardContainerStyle}
                         padding={0}
                     >
